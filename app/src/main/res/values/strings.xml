@@ -20,4 +20,12 @@
     <string name="menu_timetable_search">Search Timetables</string>
     <string name="menu_News">Latest WIT News</string>
 
+    <string name="map_IT">IT</string>
+    <string name="map_TL">TL</string>
+    <string name="map_FTG">FTG</string>
+
+
+
+
+
 </resources>

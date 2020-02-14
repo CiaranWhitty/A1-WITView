@@ -52,6 +52,7 @@ dependencies {
     // Anko SQlite
     implementation "org.jetbrains.anko:anko-sqlite:$anko_version"
 
+    implementation 'com.google.android.gms:play-services-maps:11.8.0'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
