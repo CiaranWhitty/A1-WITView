@@ -1,16 +1,14 @@
-package com.example.a1_witview.ui.map
+package com.example.a1_witview.ui.news
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+
 import com.example.a1_witview.R
 
-class MapFragment : Fragment() {
+class NewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,14 +22,14 @@ class MapFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        return inflater.inflate(R.layout.fragment_news, container, false)
     }
 
 
     companion object {
         @JvmStatic
         fun newInstance() =
-            MapFragment().apply {
+            NewsFragment().apply {
                 arguments = Bundle().apply {
 
                 }
@@ -41,5 +39,3 @@ class MapFragment : Fragment() {
 
 
 }
-
-
