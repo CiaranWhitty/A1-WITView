@@ -1,20 +1,21 @@
 package com.example.a1_witview
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import com.google.android.material.snackbar.Snackbar
-import androidx.navigation.ui.AppBarConfiguration
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import com.example.a1_witview.ui.home.HomeFragment
 import com.example.a1_witview.ui.map.MapFragment
 import com.example.a1_witview.ui.news.NewsFragment
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.toast
@@ -49,11 +50,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         ft.replace(R.id.nav_host_fragment, fragment)
         ft.commit()
 
+
+        val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
+        ActivityCompat.requestPermissions(this, permissions,0)
+
     }
-
-
-
-
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 

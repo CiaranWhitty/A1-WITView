@@ -30,5 +30,12 @@
     <string name="timetable_add_Room">Room</string>
     <string name="timetable_hint_Room">Enter a Room Name</string>
 
+    <string name="map_IT">IT</string>
+    <string name="map_TL">TL</string>
+    <string name="map_FTG">FTG</string>
+
+
+
+
 
 </resources>

@@ -14,6 +14,9 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity?.title = getString(R.string.menu_home)
+
+
         arguments?.let {
 
         }
@@ -25,6 +28,10 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
+
+
+
+
     }
 
 
