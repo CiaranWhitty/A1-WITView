@@ -12,6 +12,9 @@ class NewsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        activity?.title = getString(R.string.menu_news)
+
+
         arguments?.let {
 
         }
@@ -23,6 +26,8 @@ class NewsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_news, container, false)
+
+
     }
 
 
