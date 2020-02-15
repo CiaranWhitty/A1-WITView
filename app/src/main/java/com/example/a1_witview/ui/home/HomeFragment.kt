@@ -24,6 +24,8 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        activity?.title = getString(R.string.menu_home)
+
         /*Find the id of spinner*/
         val spinner = timetable_spinner
 
