@@ -20,4 +20,15 @@
     <string name="menu_timetable_search">Search Timetables</string>
     <string name="menu_News">Latest WIT News</string>
 
+    <string name="timetableTitle">TimeTable</string>
+    <string name="timetable_add_title">Timetable</string>
+    <string name="timetable_hint_title">Enter a Timetable Name</string>
+    <string name="timetable_add_subject">Subject</string>
+    <string name="timetable_hint_subject">Enter a Subject</string>
+    <string name="timetable_add_Lecturer">Lecturer</string>
+    <string name="timetable_hint_Lecturer">Enter a Lecturer Name</string>
+    <string name="timetable_add_Room">Room</string>
+    <string name="timetable_hint_Room">Enter a Room Name</string>
+
+
 </resources>
