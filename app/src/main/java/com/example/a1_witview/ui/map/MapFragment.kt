@@ -8,15 +8,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
+import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import com.example.a1_witview.R
+import com.example.a1_witview.ui.home.HomeFragment
+import com.example.a1_witview.ui.news.NewsFragment
 import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_map.*
+import kotlinx.android.synthetic.main.fragment_map.view.*
+import org.jetbrains.anko.support.v4.toast
 import org.jetbrains.anko.toast
 
 class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedListener {
@@ -32,19 +38,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
         super.onActivityCreated(savedInstanceState)
 
         activity?.title = getString(R.string.menu_map)
-
-
-
-/*Find the id of spinner*/
-        val spinner = Bulding_spinner
-
-        /*set an adapter with strings */
-        spinner.adapter = ArrayAdapter(
-            activity,
-            R.layout.support_simple_spinner_dropdown_item,
-            buildings
-        )
-
 
         map_view.onCreate(savedInstanceState)
         map_view.onResume()
@@ -63,8 +56,61 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
 
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_map, container, false)
+        val root = inflater.inflate(R.layout.fragment_map, container, false)
 
+        /*Find the id of spinner*/
+        val spinnerBulding = root.Bulding_spinner
+
+        /*set an adapter with strings */
+        spinnerBulding.adapter = ArrayAdapter(activity, R.layout.support_simple_spinner_dropdown_item, buildings)
+
+        spinnerBulding.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+
+
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+
+                buildings.get(position)
+
+                val IT = LatLng(52.2457685,-7.1373688)
+                val FTG = LatLng(52.246349,-7.1380473)
+                val TL = LatLng(52.2452466,-7.1418789)
+                val wit = LatLng(52.2457058,-7.1387681)
+
+                val zoomLevel = 17.2f
+
+
+                //buildings.get(1) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(IT, zoomLevel))
+                //buildings.get(2) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(FTG, zoomLevel))
+                //buildings.get(3) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(TL, zoomLevel))
+
+
+                //trying to get the spinner to work...
+
+                when (view?.id) {
+                    0 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(wit, zoomLevel))
+
+                    1 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(IT, zoomLevel))
+
+                    2 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(FTG, zoomLevel))
+
+                    3 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(TL, zoomLevel))
+
+                    else -> {
+
+                        toast("not working")
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+        }
+
+
+        return root
 
     }
 
@@ -76,6 +122,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
     override fun onNothingSelected(arg0: AdapterView<*>) {
 
     }
+
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap
