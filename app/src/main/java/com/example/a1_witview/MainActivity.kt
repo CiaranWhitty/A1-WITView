@@ -2,25 +2,42 @@ package com.example.a1_witview
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.telecom.Call
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.a1_witview.Main.MainApp
+import com.example.a1_witview.Models.TimetableModel
+import com.example.a1_witview.adapters.TimetableAdapter
+import com.example.a1_witview.adapters.TimetableListener
 import com.example.a1_witview.ui.home.HomeFragment
+import com.example.a1_witview.ui.list.TimetableListFragment
 import com.example.a1_witview.ui.map.MapFragment
 import com.example.a1_witview.ui.news.NewsFragment
+import com.google.android.gms.common.api.Response
 import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_timetablelist.*
+import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
+import org.jetbrains.anko.startActivityForResult
+import java.net.CacheResponse
+import javax.security.auth.callback.Callback
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    TimetableListener {
+
+    lateinit var app: MainApp
 
     lateinit var ft: FragmentTransaction
 
@@ -29,10 +46,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
 
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
 
         nav_view.setNavigationItemSelectedListener(this)
 
@@ -56,12 +70,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     }
 
+
+
+    override fun onTimetableClick(timetable: TimetableModel) {
+
+        startActivityForResult(intentFor<MainActivity>(), 0)
+
+    }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
             R.id.nav_home -> navigateTo(HomeFragment.newInstance())
             R.id.nav_map -> navigateTo(MapFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
+            R.id.nav_timetable -> navigateTo(TimetableListFragment.newInstance())
+
 
             else -> toast("You Selected Something Else")
         }
@@ -73,6 +97,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         menuInflater.inflate(R.menu.main, menu)
         return true
     }
+
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

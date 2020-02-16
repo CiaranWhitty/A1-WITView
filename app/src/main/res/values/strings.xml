@@ -19,6 +19,8 @@
     <string name="menu_timetables">TimeTables</string>
     <string name="menu_timetable_search">Search Timetables</string>
     <string name="menu_News">Latest WIT News</string>
+    <string name="menu_timetablelist">Timetables</string>
+
 
     <string name="timetableTitle">TimeTable</string>
     <string name="timetable_add_title">Timetable</string>
