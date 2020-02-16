@@ -20,7 +20,6 @@ import org.jetbrains.anko.AnkoLogger
 import org.jetbrains.anko.info
 import org.jetbrains.anko.support.v4.toast
 
-
 class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
 
     lateinit var D_time: TextView
