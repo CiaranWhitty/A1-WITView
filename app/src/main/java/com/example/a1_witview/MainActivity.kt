@@ -87,6 +87,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_timetable -> navigateTo(TimetableListFragment.newInstance())
 
 
+
+
             else -> toast("You Selected Something Else")
         }
         drawer_layout.closeDrawer(GravityCompat.START)
