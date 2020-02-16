@@ -63,6 +63,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_map -> navigateTo(MapFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
 
+
+
             else -> toast("You Selected Something Else")
         }
         drawer_layout.closeDrawer(GravityCompat.START)
