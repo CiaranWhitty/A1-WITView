@@ -33,7 +33,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         app = activity?.application as MainApp
-        activity?.title = getString(R.string.menu_home)
+
 
 
         // Adding Timetables
@@ -54,10 +54,10 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
                 app.timetableStore.create(timetable.copy())
 
                 info ("Title: $timetableTitle")
-
+                info (app.timetableStore)
                 info (app.timetableStore.findAll())
 
-                HomeFragment.newInstance()
+                toast (Title_Input.text.toString() + " - is Now Created")
 
             }
             else {
@@ -81,6 +81,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
 
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_home, container, false)
+        activity?.title = getString(R.string.menu_home)
 
         /*Find the id of spinner*/
         val spinnerTimes = root.timetable_spinner_times

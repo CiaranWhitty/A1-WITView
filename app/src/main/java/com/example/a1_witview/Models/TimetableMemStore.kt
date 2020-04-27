@@ -28,7 +28,7 @@ class TimetableMemStore : TimetableStore {
     }
 
     fun logAll() {
-        Log.v("Donate","** Timetables List **")
+        Log.v("Timetable","** Timetables List **")
         timetables.forEach { Log.v("Timetable","${it}") }
     }
 }

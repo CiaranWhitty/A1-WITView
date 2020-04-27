@@ -19,7 +19,6 @@ class TimetableListFragment : Fragment() {
 
     lateinit var app: MainApp
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activity?.title = getString(R.string.menu_timetablelist)
@@ -37,8 +36,11 @@ class TimetableListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
         val root = inflater.inflate(R.layout.fragment_timetablelist, container, false)
 
+        root.recyclerView.setLayoutManager(LinearLayoutManager(activity))
+        root.recyclerView.adapter = TimetableAdapter(app.timetableStore.findAll())
 
         return root
 
