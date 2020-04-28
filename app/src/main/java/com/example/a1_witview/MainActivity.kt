@@ -1,31 +1,38 @@
 package com.example.a1_witview
 
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.telecom.Call
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a1_witview.Main.MainApp
 import com.example.a1_witview.Models.TimetableModel
+import com.example.a1_witview.adapters.TimetableAdapter
 import com.example.a1_witview.adapters.TimetableListener
 import com.example.a1_witview.ui.home.HomeFragment
 import com.example.a1_witview.ui.list.TimetableListFragment
 import com.example.a1_witview.ui.map.MapFragment
 import com.example.a1_witview.ui.news.NewsFragment
-
+import com.google.android.gms.common.api.Response
+import com.google.android.gms.maps.GoogleMap
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.activity_main.*
-
+import kotlinx.android.synthetic.main.fragment_timetablelist.*
 import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
-
-import com.google.firebase.auth.FirebaseAuth
-
+import org.jetbrains.anko.startActivityForResult
+import java.net.CacheResponse
+import javax.security.auth.callback.Callback
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
     TimetableListener {
@@ -38,6 +45,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+
 
         nav_view.setNavigationItemSelectedListener(this)
 
@@ -78,8 +87,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_timetable -> navigateTo(TimetableListFragment.newInstance())
 
 
-
-
             else -> toast("You Selected Something Else")
         }
         drawer_layout.closeDrawer(GravityCompat.START)
@@ -95,9 +102,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 
         when (item.itemId) {
-            // LogOut
-            R.id.action_Logout -> {FirebaseAuth.getInstance().signOut() ; finish()}
-
+            R.id.action_settings -> toast("You Selected Settings")
         }
         return super.onOptionsItemSelected(item)
     }
