@@ -80,8 +80,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
 
 
-
-
             else -> toast("You Selected Something Else")
         }
         drawer_layout.closeDrawer(GravityCompat.START)
