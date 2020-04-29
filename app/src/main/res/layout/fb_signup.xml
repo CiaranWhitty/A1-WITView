@@ -5,6 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/signin_bg_image2"
+        android:layout_width="455dp"
+        android:layout_height="750dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/vertical_background_image" />
+
     <LinearLayout
         android:layout_width="364dp"
         android:layout_height="621dp"
@@ -17,7 +26,7 @@
         <ImageView
             android:id="@+id/signin_logo"
             android:layout_width="match_parent"
-            android:layout_height="233dp"
+            android:layout_height="200dp"
             app:srcCompat="@mipmap/ic_launcher_background" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -28,18 +37,16 @@
                 android:id="@+id/signin_button_SU"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="296dp"
                 android:text="@string/signIn_Here_Button"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+                app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
                 android:layout_width="309dp"
                 android:layout_height="296dp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/signin_button_SU"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -48,15 +55,18 @@
                     android:id="@+id/signup_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Text_Email" />
+                    android:text="@string/Text_Email"
+                    android:textColor="@android:color/white" />
 
                 <EditText
                     android:id="@+id/signup_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="email@address.com"
                     android:ems="10"
-                    android:inputType="textEmailAddress" />
+                    android:hint="email@address.com"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/darker_gray" />
 
                 <Space
                     android:layout_width="match_parent"
@@ -66,15 +76,18 @@
                     android:id="@+id/signup_text_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/Text_Password" />
+                    android:text="@string/Text_Password"
+                    android:textColor="@android:color/white"/>
 
                 <EditText
                     android:id="@+id/signup_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Six Characters"
                     android:ems="10"
-                    android:inputType="textPassword" />
+                    android:hint="Six Characters"
+                    android:inputType="textPassword"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@android:color/darker_gray" />
 
                 <Button
                     android:id="@+id/signup_button"
