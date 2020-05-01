@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
         ActivityCompat.requestPermissions(this, permissions,0)
 
+
+
+
     }
 
 
@@ -113,4 +116,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             .addToBackStack(null)
             .commit()
     }
+
+
+
+
 }

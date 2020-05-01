@@ -7,6 +7,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.a1_witview.MainActivity
 import com.example.a1_witview.R
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.SignInButton
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import kotlinx.android.synthetic.main.fb_signin.*
@@ -32,7 +34,12 @@ class SignIn : AppCompatActivity(){
             doLogin()
         }
 
+        sign_in_button.setSize(SignInButton.SIZE_WIDE)
+        sign_in_button.setColorScheme(0)
+
+
     }
+
 
     public override fun onStart() {
         super.onStart()
