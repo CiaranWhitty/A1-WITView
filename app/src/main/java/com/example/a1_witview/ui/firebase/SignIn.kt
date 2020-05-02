@@ -34,8 +34,6 @@ class SignIn : AppCompatActivity(){
             doLogin()
         }
 
-        sign_in_button.setSize(SignInButton.SIZE_WIDE)
-        sign_in_button.setColorScheme(0)
 
 
     }

@@ -10,10 +10,11 @@ import com.example.a1_witview.Models.TimetableModel
 import com.example.a1_witview.R
 import kotlinx.android.synthetic.main.sidecard_timetable.view.*
 
+interface TimetableListener {
+    fun onTimetableClick(timetable: TimetableModel)
+}
 
-
-class TimetableAdapter constructor(private var timetables: List<TimetableModel>)
-    : RecyclerView.Adapter<TimetableAdapter.MainHolder>() {
+class TimetableAdapter constructor(private var timetables: List<TimetableModel>) : RecyclerView.Adapter<TimetableAdapter.MainHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
         return MainHolder(
@@ -27,12 +28,13 @@ class TimetableAdapter constructor(private var timetables: List<TimetableModel>)
 
     override fun getItemCount(): Int = timetables.size
 
-
-
     class MainHolder constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(timetable: TimetableModel) {
             itemView.timetablename.text = timetable.title
+
+
+
         }
     }
 }

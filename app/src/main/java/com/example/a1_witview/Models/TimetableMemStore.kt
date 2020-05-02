@@ -27,6 +27,15 @@ class TimetableMemStore : TimetableStore {
         logAll()
     }
 
+    override fun update(timetable: TimetableModel) {
+        val timetableList = findAll() as java.util.ArrayList<TimetableModel>
+        var foundTimetable: TimetableModel? = timetableList.find { p -> p.id == timetable.id }
+        if (foundTimetable != null) {
+            foundTimetable.title = foundTimetable.title
+            logAll()
+        }
+    }
+
     fun logAll() {
         Log.v("Timetable","** Timetables List **")
         timetables.forEach { Log.v("Timetable","${it}") }

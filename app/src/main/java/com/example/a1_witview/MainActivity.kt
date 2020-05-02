@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction
 import com.example.a1_witview.Main.MainApp
 import com.example.a1_witview.Models.TimetableModel
 import com.example.a1_witview.adapters.TimetableListener
+import com.example.a1_witview.ui.firebase.SignIn
 import com.example.a1_witview.ui.home.HomeFragment
 import com.example.a1_witview.ui.list.TimetableListFragment
 import com.example.a1_witview.ui.map.MapFragment
@@ -25,6 +26,7 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 import com.google.firebase.auth.FirebaseAuth
+import org.jetbrains.anko.startActivityForResult
 
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
@@ -99,7 +101,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         when (item.itemId) {
             // LogOut
-            R.id.action_Logout -> {FirebaseAuth.getInstance().signOut() ; finish()}
+            R.id.action_Logout -> {FirebaseAuth.getInstance().signOut() ; startActivityForResult<SignIn>(0)}
 
         }
         return super.onOptionsItemSelected(item)

@@ -48,8 +48,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
             timetable.spinnerD = Display_Day.text.toString()
 
 
-            if (timetable.title.isNotEmpty() && timetable.subject.isNotEmpty() &&
-                timetable.lecturer.isNotEmpty() && timetable.room.isNotEmpty() ) {
+            if (timetable.title.isNotEmpty()) {
 
                 app.timetableStore.create(timetable.copy())
 
@@ -61,7 +60,7 @@ class HomeFragment : Fragment(), AdapterView.OnItemSelectedListener, AnkoLogger{
 
             }
             else {
-                toast ("Please Fill in all Text Fields")
+                toast ("Please Enter a Title")
             }
 
         }

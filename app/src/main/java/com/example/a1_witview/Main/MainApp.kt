@@ -17,7 +17,5 @@ class MainApp : Application(), AnkoLogger {
         timetableStore = TimetableJSONStore(applicationContext)
         info("WITView has started")
 
-        timetableStore.create(TimetableModel(0,"test","sub1","lec1","room1","9.15","Monday"))
-
     }
 }

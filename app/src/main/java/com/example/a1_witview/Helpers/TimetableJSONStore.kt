@@ -33,6 +33,7 @@ class TimetableJSONStore : TimetableStore, AnkoLogger {
         }
     }
 
+
     override fun findAll(): MutableList<TimetableModel> {
         return timetables
     }
@@ -42,6 +43,17 @@ class TimetableJSONStore : TimetableStore, AnkoLogger {
         timetables.add(timetable)
         serialize()
     }
+
+    override fun update(timetable: TimetableModel) {
+        val timetableList = findAll() as ArrayList<TimetableModel>
+        var foundTimetable: TimetableModel? = timetableList.find { p -> p.id == timetable.id }
+        if (foundTimetable != null) {
+            foundTimetable.title = foundTimetable.title
+
+        }
+        serialize()
+    }
+
 
 
 

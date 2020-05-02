@@ -1,34 +1,30 @@
 package com.example.a1_witview.ui.map
 
-import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.*
-import androidx.core.app.ActivityCompat
-import androidx.core.view.GravityCompat
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
-import com.example.a1_witview.R
-import com.example.a1_witview.ui.home.HomeFragment
-import com.example.a1_witview.ui.news.NewsFragment
-import com.google.android.gms.maps.CameraUpdate
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_map.*
 import kotlinx.android.synthetic.main.fragment_map.view.*
 import org.jetbrains.anko.support.v4.toast
-import org.jetbrains.anko.toast
+import android.text.method.TextKeyListener.clear
+import com.example.a1_witview.R
+import com.google.android.gms.maps.MapView
+
 
 class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedListener {
 
 
-    var spinner:Spinner? = null
+    var spinner: Spinner? = null
     var textView_msg: TextView? = null
     var buildings = arrayOf("Main","IT", "FTG", "TL")
 
@@ -43,6 +39,18 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
         map_view.onResume()
 
         map_view.getMapAsync(this)
+
+        btn_Map_Refresh.setOnClickListener(){
+
+            map_view.onCreate(savedInstanceState)
+            map_view.onResume()
+
+            map_view.getMapAsync(this)
+            toast("Refresh")
+        }
+
+
+
 
         arguments?.let {
 
@@ -100,6 +108,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
 
                         toast("not working")
                     }
+
+
+
                 }
             }
 
@@ -122,7 +133,6 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
     override fun onNothingSelected(arg0: AdapterView<*>) {
 
     }
-
 
     override fun onMapReady(googleMap: GoogleMap) {
         map = googleMap

@@ -36,6 +36,7 @@
     <string name="map_IT">IT</string>
     <string name="map_TL">TL</string>
     <string name="map_FTG">FTG</string>
+    <string name="map_Refresh">Refresh</string>
 
     <string name="Text_Email">Email:</string>
     <string name="Text_Password">Password:</string>
