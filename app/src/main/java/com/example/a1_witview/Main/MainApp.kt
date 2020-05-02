@@ -17,5 +17,6 @@ class MainApp : Application(), AnkoLogger {
         timetableStore = TimetableJSONStore(applicationContext)
         info("WITView has started")
 
+
     }
 }

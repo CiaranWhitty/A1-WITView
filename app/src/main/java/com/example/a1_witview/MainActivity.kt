@@ -26,6 +26,7 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.android.synthetic.main.fragment_map.*
 import org.jetbrains.anko.startActivityForResult
 
 

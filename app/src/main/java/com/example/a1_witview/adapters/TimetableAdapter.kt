@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a1_witview.Models.TimetableModel
 import com.example.a1_witview.R
+import kotlinx.android.synthetic.main.card_timetable_details.view.*
 import kotlinx.android.synthetic.main.sidecard_timetable.view.*
 
 interface TimetableListener {
@@ -32,8 +33,11 @@ class TimetableAdapter constructor(private var timetables: List<TimetableModel>)
 
         fun bind(timetable: TimetableModel) {
             itemView.timetablename.text = timetable.title
-
-
+            itemView.timetable_subject.text = timetable.subject
+            itemView.timetable_lecturer.text = timetable.lecturer
+            itemView.timetable_room.text = timetable.room
+            itemView.timetable_Times.text = timetable.spinnerT
+            itemView.timetable_Days.text = timetable.spinnerD
 
         }
     }

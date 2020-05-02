@@ -1,5 +1,6 @@
 package com.example.a1_witview.ui.map
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,11 +15,10 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.fragment_map.*
-import kotlinx.android.synthetic.main.fragment_map.view.*
 import org.jetbrains.anko.support.v4.toast
-import android.text.method.TextKeyListener.clear
+import com.example.a1_witview.MainActivity
 import com.example.a1_witview.R
-import com.google.android.gms.maps.MapView
+import kotlinx.android.synthetic.main.fragment_map.view.*
 
 
 class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedListener {
@@ -26,7 +26,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
 
     var spinner: Spinner? = null
     var textView_msg: TextView? = null
-    var buildings = arrayOf("Main","IT", "FTG", "TL")
+    var buildings = arrayOf("Unselected", "Main","IT", "FTG", "TL")
+
+
 
     private lateinit var map: GoogleMap
 
@@ -42,13 +44,13 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
 
         btn_Map_Refresh.setOnClickListener(){
 
-            map_view.onCreate(savedInstanceState)
-            map_view.onResume()
+            val intent = Intent(activity, MainActivity::class.java)
+            startActivity(intent)
 
-            map_view.getMapAsync(this)
-            toast("Refresh")
+            map_view.onDestroy()
+
+            toast("Refreshed")
         }
-
 
 
 
@@ -78,43 +80,45 @@ class MapFragment : Fragment(), OnMapReadyCallback, AdapterView.OnItemSelectedLi
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
 
-                buildings.get(position)
+                buildings[position]
 
                 val IT = LatLng(52.2457685,-7.1373688)
                 val FTG = LatLng(52.246349,-7.1380473)
                 val TL = LatLng(52.2452466,-7.1418789)
                 val wit = LatLng(52.2457058,-7.1387681)
 
-                val zoomLevel = 17.2f
 
 
-                //buildings.get(1) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(IT, zoomLevel))
-                //buildings.get(2) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(FTG, zoomLevel))
-                //buildings.get(3) ->  map.moveCamera(CameraUpdateFactory.newLatLngZoom(TL, zoomLevel))
+                if (buildings.asList().indexOf(buildings[position]) == 0) {
 
+                    toast("Please select an option")
 
-                //trying to get the spinner to work...
+                }
 
-                when (view?.id) {
-                    0 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(wit, zoomLevel))
+                if (buildings.asList().indexOf(buildings[position]) == 1) {
 
-                    1 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(IT, zoomLevel))
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(wit, 18f))
 
-                    2 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(FTG, zoomLevel))
+                }
+                if (buildings.asList().indexOf(buildings[position]) == 2) {
 
-                    3 -> map.moveCamera(CameraUpdateFactory.newLatLngZoom(TL, zoomLevel))
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(IT, 20f))
 
-                    else -> {
+                }
+                if (buildings.asList().indexOf(buildings[position]) == 3) {
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(FTG, 19f))
 
-                        toast("not working")
-                    }
+                }
+                if (buildings.asList().indexOf(buildings[position]) == 4) {
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(TL, 18f))
 
+                }
 
 
                 }
-            }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {
+
 
             }
 
