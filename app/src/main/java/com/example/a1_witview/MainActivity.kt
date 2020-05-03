@@ -10,8 +10,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.a1_witview.Main.MainApp
 import com.example.a1_witview.Models.TimetableModel
+import com.example.a1_witview.adapters.TimetableAdapterSideMenu
 import com.example.a1_witview.adapters.TimetableListener
 import com.example.a1_witview.ui.firebase.SignIn
 import com.example.a1_witview.ui.home.HomeFragment
@@ -26,12 +28,10 @@ import org.jetbrains.anko.intentFor
 import org.jetbrains.anko.toast
 
 import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_map.*
 import org.jetbrains.anko.startActivityForResult
 
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    TimetableListener {
+class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, TimetableListener{
 
     lateinit var app: MainApp
 
@@ -41,6 +41,13 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
+
+        app = application as MainApp
+
+        val layoutManager = LinearLayoutManager(this)
+        recyclerViewSideMenu.layoutManager = layoutManager
+        recyclerViewSideMenu.adapter = TimetableAdapterSideMenu(app.timetableStore.findAll(), this)
+
 
         nav_view.setNavigationItemSelectedListener(this)
 
@@ -59,10 +66,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         ft.commit()
 
 
-        val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION)
+        val permissions = arrayOf(android.Manifest.permission.ACCESS_FINE_LOCATION, android.Manifest.permission.INTERNET)
         ActivityCompat.requestPermissions(this, permissions,0)
-
-
 
 
     }
@@ -71,7 +76,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onTimetableClick(timetable: TimetableModel) {
 
-        startActivityForResult(intentFor<MainActivity>(), 0)
+        startActivityForResult(intentFor<MainActivity>().putExtra("timetable_edit", timetable), 0)
 
     }
 
@@ -81,7 +86,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.nav_home -> navigateTo(HomeFragment.newInstance())
             R.id.nav_map -> navigateTo(MapFragment.newInstance())
             R.id.nav_news -> navigateTo(NewsFragment.newInstance())
-            R.id.nav_timetable -> navigateTo(TimetableListFragment.newInstance())
+            R.id.nav_timetable -> navigateTo(TimetableListFragment.newInstance()
+            )
 
 
 

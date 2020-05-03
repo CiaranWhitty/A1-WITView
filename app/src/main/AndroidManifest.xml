@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
 
+
         <activity
             android:name=".ui.firebase.SignUp"
             android:screenOrientation="portrait"

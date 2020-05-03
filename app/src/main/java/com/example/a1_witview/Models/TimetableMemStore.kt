@@ -10,7 +10,7 @@ internal fun getId(): Long {
 
 class TimetableMemStore : TimetableStore {
 
-    val timetables = ArrayList<TimetableModel>()
+    private val timetables = ArrayList<TimetableModel>()
 
     override fun findAll(): List<TimetableModel> {
         return timetables
@@ -32,6 +32,7 @@ class TimetableMemStore : TimetableStore {
         var foundTimetable: TimetableModel? = timetableList.find { p -> p.id == timetable.id }
         if (foundTimetable != null) {
             foundTimetable.title = foundTimetable.title
+
             logAll()
         }
     }

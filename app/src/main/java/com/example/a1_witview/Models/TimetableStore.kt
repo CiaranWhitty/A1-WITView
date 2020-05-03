@@ -1,6 +1,5 @@
 package com.example.a1_witview.Models
 
-import com.example.a1_witview.Models.TimetableModel
 
 interface TimetableStore {
 

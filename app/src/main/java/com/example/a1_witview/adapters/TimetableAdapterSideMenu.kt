@@ -1,36 +1,29 @@
 package com.example.a1_witview.adapters
 
-
-import android.net.sip.SipSession
 import android.view.LayoutInflater
-import android.view.OrientationEventListener
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.a1_witview.Models.TimetableModel
 import com.example.a1_witview.R
-import kotlinx.android.synthetic.main.card_timetable_details.view.*
 import kotlinx.android.synthetic.main.sidecard_timetable.view.*
 
-interface TimetableListener {
-    fun onTimetableClick(timetable: TimetableModel)
-}
 
-class TimetableAdapter constructor(private var timetables: List<TimetableModel>,
-                                   private val listener: TimetableListener) : RecyclerView.Adapter<TimetableAdapter.MainHolder>() {
+class TimetableAdapterSideMenu constructor(private var timetables: List<TimetableModel>,
+                                           private val listener: TimetableListener) : RecyclerView.Adapter<TimetableAdapter.MainHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TimetableAdapter.MainHolder {
 
 
-        return MainHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.card_timetable, parent, false))
+        return TimetableAdapter.MainHolder(
+            LayoutInflater.from(parent.context).inflate(R.layout.sidecard_timetable, parent, false))
 
 
 
     }
 
 
-    override fun onBindViewHolder(holder: MainHolder, position: Int) {
+    override fun onBindViewHolder(holder: TimetableAdapter.MainHolder, position: Int) {
         val timetable = timetables[holder.adapterPosition]
         holder.bind(timetable, listener)
     }
@@ -54,7 +47,5 @@ class TimetableAdapter constructor(private var timetables: List<TimetableModel>,
 
         }
     }
-
-
 
 }
